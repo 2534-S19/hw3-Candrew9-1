@@ -41,23 +41,32 @@ int main(void)
 
         // YOU MUST WRITE timer0expired IN myTimer.c
         if (timer0Expired()) {
+
             count0++;
+            if (count0 > 7) {
+                count0 = 1;
+            }
         }
 
 
         // YOU MUST WRITE timer1expired IN myTimer.c
         if (timer1Expired()) {
             count1++;
+            if (count1 > 7) {
+                count1 = 1;
+           }
         }
 
 
         // TODO: Call the button state machine function to check for a completed, debounced button press.
         // YOU MUST WRITE THIS FUNCTION BELOW.
-        fsmBoosterpackButtonS1(boardButton);
+        bool bouncedValue = fsmBoosterpackButtonS1(boardButton);
 
 
         // TODO: If a completed, debounced button press has occurred, increment count1.
-
+        if (bouncedValue){
+            count1++;
+        }
 
 
     }
@@ -204,7 +213,7 @@ bool fsmBoosterpackButtonS1(button_enum buttonState) {
             break;
         case PressedtoReleased:
             //check for timer
-            if (timer1Expired) {
+            if (timer1Expired()) {
                 if (currentState == 0) {
                     buttonState = Pressed;
 
@@ -216,7 +225,7 @@ bool fsmBoosterpackButtonS1(button_enum buttonState) {
             break;
         case ReleasedtoPressed:
             //check for timer
-            if (timer1Expired) {
+            if (timer1Expired()) {
                 if (currentState == 0) {
                     buttonState = Pressed;
                 }

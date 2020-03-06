@@ -12,6 +12,7 @@
 
 typedef enum {Pressed, PressedtoReleased, ReleasedtoPressed, Released} button_enum;
 
+
 // This function initializes the board by turning off the Watchdog Timer.
 void initBoard();
 // This function indexes a count value to an LED color on Launchpad LED2.
@@ -23,6 +24,7 @@ bool fsmBoosterpackButtonS1(button_enum buttonState);
 
 
 // TODO: Define any constants that are local to homework.c using #define
+
 
 
 #endif /* HOMEWORK3_H_ */
